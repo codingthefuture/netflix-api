@@ -3,6 +3,7 @@ const cors = require("cors");
 const userRoutes = require("./routes/UserRoutes");
 const mongoose = require("mongoose");
 // import dotenv from 'dotenv';
+const corsOptions = require('./config/corsOptions')
 const dotenv = require('dotenv');
 
 
@@ -10,7 +11,7 @@ dotenv.config(); //read .env file
 
 const app = express();
 
-app.use(cors());
+app.use(cors(corsOptions))
 app.use(express.json());
 
 mongoose.connect(process.env.DATABASE_URI, () => {
